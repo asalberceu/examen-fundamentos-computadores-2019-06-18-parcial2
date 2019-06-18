@@ -6,8 +6,12 @@ def leer_fichero(url):
     Devuelve:
         Una lista cuyos elementos son a su vez listas que contienen los datos de cada línea del fichero menos la primera línea.
     """
+    
+lineas = f.readlines()
+f.close()
+del(url[0])
+f = request.urlopen(url)
 
-    return datos_viviendas
 
 
 def distritos(datos_viviendas):

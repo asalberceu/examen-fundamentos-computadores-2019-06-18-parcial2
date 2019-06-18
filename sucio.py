@@ -9,7 +9,7 @@ morse = {'A': '.-',     'B': '-...',   'C': '-.-.',
          'V': '...-',   'W': '.--',    'X': '-..-',
          'Y': '-.--',   'Z': '--..'}
 
-
+#1.1
 def codificar_palabra(palabra):
     """
     Función que codifica una palabra en morse.
@@ -18,13 +18,14 @@ def codificar_palabra(palabra):
     Devuelve:
         El código morse correspondiente a la palabra con los bloques de código de cada letra separados por punto y coma.
     """
+    
     palabra_codificada = ''
     for i in palabra:
         if i.upper() in morse:
             palabra_codificada += morse[i.upper()]
     return palabra_codificada
 
-
+#1.2
 def decodificar_palabra(palabra):
     """
     Función que decodifica una palabra en morse.
@@ -33,14 +34,17 @@ def decodificar_palabra(palabra):
     Devuelve:
         La palabra decodificada.
     """
+     
     morse_invert = dict([(value,key) for key, value in morse.items()])
     palabra_decodificada = ""
     for k in palabra.split(";"):
         if k != " " and k.upper() in morse_invert:
             palabra_decodificada += morse_invert[k.upper()]
+    
+
     return palabra_decodificada
 
-
+#1.3
 def codificar_mensaje(mensaje):
     """
     Función que codifica un mensaje en morse.
@@ -52,25 +56,7 @@ def codificar_mensaje(mensaje):
     for i in mensaje:
         words = list(map(codificar_palabra, mensaje))
         mensaje_codificado = words
+    
+
     return mensaje_codificado
-
-
-def decodificar_mensaje(palabra):
-    """
-    Función que decodifica un mensaje en morse.
-    Parámetros:
-        mensaje: Es una cadena código morse con letras separadas por punto y coma y palabras separadas por espacio.
-    Devuelve:
-        El mensaje decodificado.
-    """
-
-    return mensaje_decodificado
-
-
-
-# Llamada a las funciones de prueba
-print(codificar_palabra('Python')) #Debe devolver '.--.;-.--;-;....;---;-.'
-print(decodificar_palabra('.--.;-.--;-;....;---;-.')) #Debe devolver 'PYTHON'
 print(codificar_mensaje('Hola Python')) #Debe devolver '....;---;.-..;.- .--.;-.--;-;....;---;-.'
-print(decodificar_mensaje('....;---;.-..;.- .--.;-.--;-;....;---;-.')) #Debe devolver 'HOLA PYTHON'
-
