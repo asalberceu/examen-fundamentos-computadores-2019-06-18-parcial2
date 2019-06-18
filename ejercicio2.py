@@ -6,8 +6,20 @@ def leer_fichero(url):
     Devuelve:
         Una lista cuyos elementos son a su vez listas que contienen los datos de cada línea del fichero menos la primera línea.
     """
+    from urllib import request
+    try:
+        f = request.urlopen(url)
+    except FileNotFoundError:
+        print("El fichero no existe!")
+    datos_viviendas = []
+    f.readline()
+    lineas = f.readlines()
+    for i in lineas:
+        datos_viviendas.append(list(i))
 
     return datos_viviendas
+
+print(leer_fichero("https://datos.madrid.es/egob/catalogo/300117-0-arrendamiento-programas.csv"))
 
 
 def distritos(datos_viviendas):
@@ -18,10 +30,19 @@ def distritos(datos_viviendas):
     Devuelve:
         Una lista con los distritos correspondientes a cada lista.
     """
+    from urllib import request
+    try:
+        f = request.urlopen("https://datos.madrid.es/egob/catalogo/300117-0-arrendamiento-programas.csv")
+    except FileNotFoundError:
+        print("El fichero no existe!")
+    else:
+        distritos = []
+        for i in range(len(datos_viviendas)):
+            distritos.append(f.read(2:23)(0))
 
     return distritos
 
-
+print(distritos(datos_viviendas))
 def filtrar_distritos(datos_viviendas, distritos):
     """
     Función que recibe una lista de listas con los datos de las viviendas arrendadas y una lista de nombres de distritos y devuelve una lista con las listas correspondientes a los distritos indicados
@@ -33,6 +54,8 @@ def filtrar_distritos(datos_viviendas, distritos):
     """
 
     return datos_distritos
+
+print(distritos(datos_viviendas, distritos))
 
 
 def viviendas_distritos(datos_viviendas):
