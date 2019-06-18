@@ -1,4 +1,3 @@
-# Diccionario con la codificación morse
 morse = {'A': '.-',     'B': '-...',   'C': '-.-.', 
          'D': '-..',    'E': '.',      'F': '..-.',
          'G': '--.',    'H': '....',   'I': '..',
@@ -8,18 +7,6 @@ morse = {'A': '.-',     'B': '-...',   'C': '-.-.',
          'S': '...',    'T': '-',      'U': '..-',
          'V': '...-',   'W': '.--',    'X': '-..-',
          'Y': '-.--',   'Z': '--..'}
-
-#apartado 1
-def codificar_palabra(palabra):
-    letras=[]
-    
-    for i in palabra:
-        letra=morse[i]
-        letras.append(letra)
-    
-    print(letras,end='')
-    return codificar_palabra
-codificar_palabra('PYTHON')
 
 #apartado 2
 morseinvert = dict(map(reversed, morse.items()))
@@ -32,22 +19,8 @@ def decodificar_palabra(palabra):
         letras.append(letra)
     print(letras,end='')
     return decodificar_palabra
-decodificar_palabra(''....', '---', '.-..', '.-'') 
+print(decodificar_palabra('.-.'))
 
-#apartado 3
-def codificar_mensaje(mensaje):
-    separado=[]
-    for i in mensaje:
-        separado.append(i)
-    
-    for i in separado:
-        mensajemorse=codificar_palabra(i)
-    print(mensajemorse)
-    return
-    
-
-
-print(codificar_mensaje('HOLA PYHTON')
 
 #Apartado 4
 def decodificar_mensaje(mensaje):
@@ -59,9 +32,6 @@ def decodificar_mensaje(mensaje):
         print(mensajemorse)
     return mensaje_decodificado
 print(decodificar_mensaje('....;---;.-..;.- .--.;-.--;-;....;---;-.'))
-
-
-
 
 
 
