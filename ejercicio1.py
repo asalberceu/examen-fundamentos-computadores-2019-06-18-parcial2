@@ -18,7 +18,14 @@ def codificar_palabra(palabra):
     Devuelve:
         El código morse correspondiente a la palabra con los bloques de código de cada letra separados por punto y coma.
     """
-
+    palabra = input('Introduce una palabra: ')
+    for i in palabra:
+        i = letras
+    for i in morse:
+        i = claves
+    if claves == letras:
+        palabra_codificada = palabra
+        print() 
     return palabra_codificada
 
 
