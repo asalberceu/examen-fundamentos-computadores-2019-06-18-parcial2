@@ -9,8 +9,19 @@ morse = {'A': '.-',     'B': '-...',   'C': '-.-.',
          'V': '...-',   'W': '.--',    'X': '-..-',
          'Y': '-.--',   'Z': '--..'}
 
+#crear variable que almacene el texto a codificar una vez hagamos la 'traducción'
+palabra_codificada = ""
 
 def codificar_palabra(palabra):
+    for c in palabra:
+        if c != " " and c.upper() in codigo_morse:
+            texto_codificado += morse[c.upper()]
+        else:
+            texto_codificado += c
+    return palabra_codificada
+    
+print("Texto codificado: {}".format(palabra_codificada, end=';'))
+   
     """
     Función que codifica una palabra en morse.
     Parámetros:
@@ -18,8 +29,10 @@ def codificar_palabra(palabra):
     Devuelve:
         El código morse correspondiente a la palabra con los bloques de código de cada letra separados por punto y coma.
     """
-
+    
+    
     return palabra_codificada
+palabra_codificada
 
 
 def decodificar_palabra(palabra):
