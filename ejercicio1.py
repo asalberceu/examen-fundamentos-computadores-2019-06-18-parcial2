@@ -9,7 +9,6 @@ morse = {'A': '.-',     'B': '-...',   'C': '-.-.',
          'V': '...-',   'W': '.--',    'X': '-..-',
          'Y': '-.--',   'Z': '--..'}
 
-
 def codificar_palabra(palabra):
     """
     Función que codifica una palabra en morse.
@@ -18,8 +17,15 @@ def codificar_palabra(palabra):
     Devuelve:
         El código morse correspondiente a la palabra con los bloques de código de cada letra separados por punto y coma.
     """
-
+    palabrafinal = palabra.replace(""," ")[1:-1]
+    palabra_codificada = ""
+    for letra in palabrafinal:
+        if letra != " " and letra.upper() in morse:
+            palabra_codificada += morse[letra.upper()]
+        elif letra == " ":
+            palabra_codificada += ";"
     return palabra_codificada
+
 
 
 def decodificar_palabra(palabra):
@@ -30,7 +36,12 @@ def decodificar_palabra(palabra):
     Devuelve:
         La palabra decodificada.
     """
-
+     
+    new_dict = dict([(valor, clave) for clave, valor in morse.items()])
+    palabra_decodificada = ""
+    for letra in palabra.split(";"):
+        if letra != " " and letra.upper() in new_dict:
+            palabra_decodificada += new_dict[letra.upper()]
     # A partir del diccionario morse construir otro diccionario invertido, es decir, cuyas claves sean los códigos morse y cuyos valores sean las letras asociadas.
 
     # Utilizar el diccionario anterior para decodificar cada bloque de código de la palabra.
@@ -47,7 +58,17 @@ def codificar_mensaje(mensaje):
         El código morse correspondiente al mensaje con letras separadas por punto y coma y palabras separadas por espacio.
     """
 
-    return mensaje_codificado
+    mensaje1 = mensaje.replace(" ","$")
+    palabrafinal = mensaje1.replace(""," ")[1:-1]
+    palabra_codificada = ""
+    for letra in palabrafinal:
+        if letra != " " and letra.upper() in morse:
+            palabra_codificada += morse[letra.upper()]
+        elif letra == " ":
+            palabra_codificada += ";"
+        elif letra == '$':
+            palabra_codificada += " "
+    return palabra_codificada
 
 
 def decodificar_mensaje(palabra):
@@ -59,7 +80,20 @@ def decodificar_mensaje(palabra):
         El mensaje decodificado.
     """
 
+    inverso = dict([(valor, clave) for clave, valor in morse.items()]) 
+    mensaje_decodificado = ""
+    palabrafinal = palabra.split(";")
+    inverso['.- .--.'] = "A P" 
+    print(palabrafinal)
+    for letra in palabrafinal:
+        if letra != " " and letra in inverso:
+            mensaje_decodificado += inverso[letra]
+        elif letra == " ":
+            mensaje_decodificado += " "
+
+    
     return mensaje_decodificado
+      
 
 
 

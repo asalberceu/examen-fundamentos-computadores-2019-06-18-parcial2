@@ -1,11 +1,13 @@
 def leer_fichero(url):
-    """
-    Función que abre un fichero de texto desde una url y devuelve una lista de listas con los datos del fichero.
-    Parámetros:
-        url: URL del fichero de texto en formato csv donde cada registro aparece en una línea y los campos están separados por punto y coma `;`.
-    Devuelve:
-        Una lista cuyos elementos son a su vez listas que contienen los datos de cada línea del fichero menos la primera línea.
-    """
+    from urllib import request
+    try:
+        f = request.urlopen(url)
+    except FileNotFoundError:
+        print("El fichero no existe!")
+    datos_viviendas = []
+    lineas = f.readlines()
+    for i in lineas:
+        datos_viviendas.append(list(i))
 
     return datos_viviendas
 
