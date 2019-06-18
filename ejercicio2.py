@@ -6,7 +6,19 @@ def leer_fichero(url):
     Devuelve:
         Una lista cuyos elementos son a su vez listas que contienen los datos de cada línea del fichero menos la primera línea.
     """
-
+    # Carga del módulo necesario para acceder a un fichero de internet.
+    from urllib import request
+    # Abrimos el fichero con la url dada
+    f = request.urlopen(url)
+    # Leemos los datos del fichero en una cadena
+    datos_viviendas = f.read()
+    # Decodificamos los datos con la codificación latin1.
+    datos_viviendas = datos_viviendas.decode('latin1')
+    # Creamos una lista con las líneas del fichero dividiendo la cadena por el cambio de línea
+    datos_viviendas = datos_viviendas.split('\n')
+    # Eliminamos la primera línea
+    datos_viviendas.pop(0)
+    datos_viviendas = [i.split(';') for i in datos_viviendas]
     return datos_viviendas
 
 
@@ -18,7 +30,7 @@ def distritos(datos_viviendas):
     Devuelve:
         Una lista con los distritos correspondientes a cada lista.
     """
-
+    distritos = [i[0] for i in datos_viviendas[1:]]
     return distritos
 
 
@@ -31,7 +43,7 @@ def filtrar_distritos(datos_viviendas, distritos):
     Devuelve:
         Una lista con las listas que contienen los datos de las viviendas arrendadas de los distritos indicados.
     """
-
+    datos_distritos = [i for i in datos_viviendas if i[0] in distritos]
     return datos_distritos
 
 
@@ -43,7 +55,7 @@ def viviendas_distritos(datos_viviendas):
     Devuelve:
         Un diccionario cuyas claves son los nombres de los distritos y cuyos valores son el número total de viviendas arrendadas en cada distrito.
     """
-
+    viviendas = {i[0]:i[1] for i in datos_viviendas}
     return viviendas
 
 
