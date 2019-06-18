@@ -18,8 +18,11 @@ def codificar_palabra(palabra):
     Devuelve:
         El código morse correspondiente a la palabra con los bloques de código de cada letra separados por punto y coma.
     """
-
+    palabra= ()
+    separadas= palabra.split(",")
+    palabra_codificada= separadas.values(morse)
     return palabra_codificada
+    print(codificar("ANA"))
 
 
 def decodificar_palabra(palabra):
@@ -30,6 +33,8 @@ def decodificar_palabra(palabra):
     Devuelve:
         La palabra decodificada.
     """
+     
+    return palabra_codificada
 
     # A partir del diccionario morse construir otro diccionario invertido, es decir, cuyas claves sean los códigos morse y cuyos valores sean las letras asociadas.
 

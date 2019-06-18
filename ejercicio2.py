@@ -6,7 +6,8 @@ def leer_fichero(url):
     Devuelve:
         Una lista cuyos elementos son a su vez listas que contienen los datos de cada línea del fichero menos la primera línea.
     """
-
+    open= ('AdjudicacionAlquilerViviendas.csv', "w")
+    
     return datos_viviendas
 
 
